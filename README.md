@@ -44,15 +44,30 @@
     ```
 7. **Erstellen Sie eine .env-Datei im Projektverzeichnis und fügen Sie**
 ```bash
+cd mein_projekt
 sudo nano .env
 ```
 8.  ***env Text einfügen***
-   ```bash
+```bash
 SECRET_KEY=django-insecure
 DATABASE_NAME=your_database_name
 DATABASE_USER=your_database_user
 DATABASE_PASSWORD=your_database_password
 DATABASE_HOST=your_database_host
 DATABASE_PORT=your_database_port
+```
+9. **Datenbank migrieren**
+Führen Sie die Migrationen durch:
+```bash
+python manage.py migrate
+```
+10. ***superuser erstellen***
+```bash
+python manage.py createsuperuser
+```
+11. **Server starten**
+Starten Sie den Entwicklungsserver:
+```bash
+python manage.py runserver
 ```
   
