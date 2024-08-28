@@ -55,6 +55,7 @@ DATABASE_USER=your_database_user
 DATABASE_PASSWORD=your_database_password
 DATABASE_HOST=your_database_host
 DATABASE_PORT=your_database_port
+DEBUG=True
 ```
 9. **Datenbank migrieren**
 Führen Sie die Migrationen durch:
