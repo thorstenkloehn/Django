@@ -128,7 +128,7 @@ CMS_CONFIRM_VERSION4 = True
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql",
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASSWORD'),
