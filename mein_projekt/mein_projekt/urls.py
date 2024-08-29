@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from startseite.views import hallo_view
+from django.urls import include
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hallo_view),
+    path("", include("cms.urls")),
 ]

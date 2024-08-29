@@ -41,52 +41,76 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+  'django.contrib.sites',  # Diese Zeile hinzufügen
+    'cms',
+    'menus',
+    'treebeard',
+    'sekizai',
     'startseite',
 ]
+CMS_CONFIRM_VERSION4 = True
+# Fügen Sie die folgende Zeile hinzu, um die Site-ID zu definieren
+SITE_ID = 2
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # LocaleMiddleware hinzufügen
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 
+]
+X_FRAME_OPTIONS = "SAMEORIGIN"
 ROOT_URLCONF = 'mein_projekt.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+       #   'DIRS': ['templates'], # Diesen Pfad hinzufügen
+        'DIRS': [os.path.join(BASE_DIR, 'startseite/templates')],  # Diesen Pfad hinzufügen
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': [
+                'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings',  # cms_settings hinzufügen
+         
             ],
         },
     },
 ]
+CMS_TEMPLATES = [
+    ('home.html', 'Home page template'),
+]
 
 WSGI_APPLICATION = 'mein_projekt.wsgi.application'
 
-
+CMS_CONFIRM_VERSION4 = True
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        "ENGINE": "django.db.backends.postgresql",
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASSWORD'),
@@ -117,6 +141,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
+LANGUAGES = [
+    ('de-de', 'Deutsch'),
+    ('en', 'English'),
+]
 
 LANGUAGE_CODE = 'de-de'
 

@@ -30,22 +30,24 @@
     ```
     pip install psycopg2
     ```
-5. **Datenbank einrichten**   
-    Erstellen Sie die Datenbank:
-    ```bash
-    sudo -u postgres -i
-    createdb -E UTF8 -O thorsten django
-    exit
-    ``` 
-6. **Django-environ Instsllieren**
+
+5. **Django-environ Instsllieren**
     Installieren Sie Django-environ:
     ```bash
     pip install django-environ
     ```
-7. **Erstellen Sie eine .env-Datei im Projektverzeichnis und fügen Sie**
+6. **Erstellen Sie eine .env-Datei im Projektverzeichnis und fügen Sie**
 ```bash
 cd mein_projekt
 sudo nano .env
+```
+7. GeoDjango installieren
+```bash
+pip install django-geojson
+```
+7.1 Django CMS
+```bash
+pip install django-cms
 ```
 8.  ***env Text einfügen***
 ```bash
@@ -66,9 +68,10 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
-11. **Server starten**
+12. **Server starten**
 Starten Sie den Entwicklungsserver:
 ```bash
 python manage.py runserver
 ```
+
   
